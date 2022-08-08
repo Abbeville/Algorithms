@@ -1,0 +1,28 @@
+function solution(A, K) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    if(A.length == K){
+        return A;
+    }
+
+    if(A.every(el => el === A[0])){
+        return A;
+    }
+
+    for(let i = 0; i < K; i++){
+            let toBeReplaced = 0;
+            let newToBeReplaced =0;
+        for(let j = 0; j < A.length; j++) {
+            if(j == 0){
+                toBeReplaced = A[j];
+               A[j] = A[A.length - 1];
+            }else{
+                newToBeReplaced = A[j];
+                A[j] = toBeReplaced;
+                toBeReplaced = newToBeReplaced;
+            }
+        }
+        
+    }
+
+    return A
+}
