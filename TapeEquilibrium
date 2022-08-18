@@ -1,0 +1,34 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    if(A.length == 0 || A.length == 1){
+        return 0;
+    }else if (A.length == 2){
+        return Math.abs(A[0] - A[1]);
+    }
+    let min = 10000000;
+    for(let i = 1; i <= A.length; i++){
+        let sumOfLeft = 0;
+        let sumOfRight = 0;
+        let difference;
+
+    
+        for(let j = 0; j <= i - 1; j++){
+            sumOfLeft += A[j];
+        }
+
+        for(let k = i; k <= A.length - 1; k++){
+            sumOfRight += A[k];
+        }
+
+        difference = Math.abs(sumOfLeft - sumOfRight);
+
+        if(difference < min) {
+            min = difference;
+        }
+    }
+
+    return min;
+}
