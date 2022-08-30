@@ -1,0 +1,22 @@
+function solution(X, A) {
+    //Check if leave reach the last position.
+    const indexOfLastPosition = A.indexOf(X)
+
+    if(indexOfLastPosition < 0){
+        return -1
+    }
+
+    let positions = [];
+    let count = 0;
+    for(let i = 0; i < A.length; i++){
+        if(A[i] <= X && positions['found'+A[i]] == null ){
+            positions['found'+A[i]] = true;
+            count++;
+        }
+        if(count == X) {
+            return i;
+        }
+    }
+
+    return -1
+}
