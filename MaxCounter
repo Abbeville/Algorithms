@@ -1,0 +1,25 @@
+function solution(N, A) {
+    let counters = new Array(N).fill(0);
+    
+    let maxCounter = 0;
+   
+    let maxToSet = 0;
+    
+    for (let i = 0; i < A.length; i++) {
+        let X = A[i] - 1;
+        
+        if (X === N) {
+            // lazy update all counters
+            maxToSet = maxCounter;
+        } else if (0 <= X && X < N) {
+            // see if we needed to set it to maxToSet but havent yet
+            counters[X] = Math.max(counters[X] + 1, maxToSet + 1);
+
+            maxCounter = Math.max(counters[X], maxCounter);
+        }
+    }
+    
+    // update any counters to maxToSet that we havent yet
+    counters = counters.map((val) => Math.max(val, maxToSet));
+    return counters;
+}
