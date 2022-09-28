@@ -1,0 +1,38 @@
+function palindromeIndex(s) {
+    // Write your code here
+    //return the index of a character, that when removed from this string the substring is      a pallindrome
+    //check if string is a pallindrom
+
+    if(isAPalindrome(s)){
+        return -1
+    }
+
+    for(let i = 0; i <= s.length; i++){
+        let firstPart = s.slice(0, i)
+        let secondPart = s.slice(i + 1)
+        let newString = firstPart + secondPart
+
+        if(isAPalindrome(newString)){
+            return i
+        }
+
+    }
+    
+    return -1
+}
+
+function isAPalindrome(s){
+    let mirroredString = '';
+    let i = 1;
+    while(s.length - i >= 0 ){
+        mirroredString += s[s.length - i];
+
+        i++;
+    }
+
+    if(mirroredString === s ){
+        return 1
+    }else{
+        return 0;
+    }
+}
